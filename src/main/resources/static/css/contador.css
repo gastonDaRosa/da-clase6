@@ -1,0 +1,78 @@
+/* Estilo global para el body */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f5f5f5;  /* Fondo gris claro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Contenedor principal */
+.contador-container {
+    background-color: #fff;  /* Fondo blanco para el contador */
+    padding: 30px 40px;
+    border-radius: 10px;  /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+    text-align: center;
+    width: 300px;
+}
+
+/* Estilo para el título */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #4CAF50;  /* Verde para el título */
+}
+
+/* Estilo para el valor del contador */
+#contadorDisplay {
+    font-size: 50px;
+    font-weight: bold;
+    color: #333;
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+/* Estilo para los botones */
+button {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Botón de aumentar */
+#disminuir {
+    background-color: #f44336;  /* Rojo */
+    color: #fff;
+}
+
+/* Botón de disminuir */
+#aumentar {
+    background-color: #4CAF50;  /* Verde */
+    color: #fff;
+}
+
+/* Efecto al pasar el mouse sobre los botones */
+button:hover {
+    background-color: #555;
+}
+
+/* Estilo para los mensajes de error */
+#mensajeError {
+    margin-top: 15px;
+    font-size: 16px;
+    color: red;
+    display: none;  /* Inicialmente oculto */
+}
