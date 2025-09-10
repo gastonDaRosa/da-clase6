@@ -1,5 +1,6 @@
 package com.sem5.clase2.modelo;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ModeloNumero {
@@ -42,6 +43,28 @@ public class ModeloNumero {
             return true;
         }
         return false;
+    }
+
+    public boolean ingresoFinalizado(){
+        return getCantidadFaltan() == 0 && todos != null;
+    }
+
+    public ArrayList<Integer> obtenerResultado(){
+        if (ingresoFinalizado()) {
+            ArrayList<Integer> resultado = todos;
+            if(pares.size() > impares.size()){
+                resultado = pares;
+            } else if (impares.size() > pares.size()){
+                resultado = impares;
+
+            }
+            return resultado;
+        }
+        return null;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
 }
