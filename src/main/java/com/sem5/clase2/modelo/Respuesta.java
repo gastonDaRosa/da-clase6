@@ -1,4 +1,4 @@
-package com.sem5.clase1.modelo;
+package com.sem5.clase2.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
