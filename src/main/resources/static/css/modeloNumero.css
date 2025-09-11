@@ -12,8 +12,8 @@ body {
 }
 
 /* Contenedor principal */
-.contador-container {
-    background-color: #fff;  /* Fondo blanco para el contador */
+.modeloNumeroContainer {
+    background-color: #fff;  /* Fondo blanco para el modeloNumero */
     padding: 30px 40px;
     border-radius: 10px;  /* Bordes redondeados */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Sombra suave */
@@ -28,8 +28,8 @@ h1 {
     color: #4CAF50;  /* Verde para el título */
 }
 
-/* Estilo para el valor del contador */
-#contadorDisplay {
+/* Estilo para el valor del modeloNumero */
+#modeloNumeroDisplay {
     font-size: 50px;
     font-weight: bold;
     color: #333;

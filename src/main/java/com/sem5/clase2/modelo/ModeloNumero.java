@@ -1,6 +1,5 @@
 package com.sem5.clase2.modelo;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ModeloNumero {
@@ -17,7 +16,7 @@ public class ModeloNumero {
     }
 
     public boolean iniciar(int cant){
-        if(this.cantidad > 0){
+        if(this.cantidad == 0){
             this.cantidad = cant;
             this.pares = new ArrayList<>();
             this.impares = new ArrayList<>();
@@ -25,6 +24,10 @@ public class ModeloNumero {
             return true;
         }
         return false;
+    }
+
+    public boolean vacio(){
+        return getCantidadFaltan() == 0 && todos.size() == 0;
     }
 
     public int getCantidadFaltan(){

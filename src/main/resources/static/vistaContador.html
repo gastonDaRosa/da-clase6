@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador con Spring Boot</title>
+    <title>Modelo Numero con Spring Boot</title>
     <!-- Enlace al archivo CSS -->
-    <link rel="stylesheet" href="/css/contador.css">
+    <link rel="stylesheet" href="/css/modeloNumero.css">
     <!-- Archivo JavaScript -->
-    <script src="/js/contador.js"></script>
+    <script src="/js/modeloNumero.js"></script>
+    <script src="/js/vistaWeb.js"></script>
 </head>
 <body>
-    <div class="contador-container">
-        <h1>Contador</h1>
-        <div id="contador">
-            <span id="contadorDisplay">0</span>
+    <div class="modeloNumeroContainer">
+        <h1>Modelo Numero</h1>
+        <div id="modeloNumero">
+            <div id="msgBienvenida"></div>
             <div>
-                <button id="disminuir">Disminuir</button>
-                <button id="aumentar">Aumentar</button>
+                <input type="number" id="numCantidad" ></input>
+                <button id="iniciar" onclick="iniciar()">Comenzar</button>
             </div>
-            <div id="mensajeError"></div>
+            <div id="faltanIngresar"></div>
+            <div>
+                <input type="number" id="numAgregar" ></input>
+                <button id="ingresar" onclick="ingresar()">Ingresar</button>
+            </div>
+            <div id="msg"></div>
+            <div id="resultado"></div>
+            
         </div>
     </div>
 </body>
