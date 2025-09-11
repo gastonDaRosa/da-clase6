@@ -3,6 +3,7 @@ package com.sem5.clase2.controlador;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import com.sem5.clase2.modelo.*;
 public class ControladorModeloNumero {
 
     private ModeloNumero modelo = new ModeloNumero();
+
 
     @PostMapping("/vistaConectada")
     public List<Respuesta> vistaConectada(){
@@ -50,16 +52,15 @@ public class ControladorModeloNumero {
     }
 
 
-
     private List<Respuesta> datosModeloNumero(){
         List<Respuesta> datos = Respuesta.lista();
         if (modelo.ingresoFinalizado()) {
             datos.add( new Respuesta("listaDev", modelo.obtenerResultado()) );
         }
         if (modelo.vacio()) {
-            datos.add( new Respuesta("msgBienvenida", "Bienvenido, ingrese una cantidad y presione Comenzar") );
+            datos.add( new Respuesta("msgBnv", "Bienvenido, ingrese una cantidad y presione Comenzar") );
         }else{
-            datos.add(new Respuesta("msgBienvenida", "Ingrese sus numeros en el siguiente input y presione Ingresar") );
+            datos.add(new Respuesta("msgBnv", "Ingrese sus numeros en el siguiente input y presione Ingresar") );
             datos.add(new Respuesta("faltanIngresar", "Numeros restantes por ingresar " + modelo.getCantidadFaltan()) );
         }
         return datos;

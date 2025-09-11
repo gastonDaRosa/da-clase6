@@ -63,7 +63,7 @@ public class ModeloNumero {
             }
             return resultado;
         }
-        return null;
+        return new ArrayList<>();
     }
 
     public void setCantidad(int cantidad) {

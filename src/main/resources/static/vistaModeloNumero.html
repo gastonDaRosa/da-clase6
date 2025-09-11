@@ -7,27 +7,30 @@
     <!-- Enlace al archivo CSS -->
     <link rel="stylesheet" href="/css/modeloNumero.css">
     <!-- Archivo JavaScript -->
-    <script src="/js/modeloNumero.js"></script>
-    <script src="/js/vistaWeb.js"></script>
+    
 </head>
 <body>
     <div class="modeloNumeroContainer">
         <h1>Modelo Numero</h1>
         <div id="modeloNumero">
-            <div id="msgBienvenida"></div>
+            <div id="msgBnv"></div>
             <div>
-                <input type="number" id="numCantidad" ></input>
-                <button id="iniciar" onclick="iniciar()">Comenzar</button>
+                <input type="number" id="numCantidad" name="cant">
+                <button type="button" id="iniciar" onclick="iniciar()">Comenzar</button>
             </div>
             <div id="faltanIngresar"></div>
             <div>
-                <input type="number" id="numAgregar" ></input>
-                <button id="ingresar" onclick="ingresar()">Ingresar</button>
+                <input type="number" id="numAgregar">
+                <button type="button" id="ingresar" onclick="ingresar()">Ingresar</button>
             </div>
             <div id="msg"></div>
             <div id="resultado"></div>
-            
+            <div id="beforeend"></div>
+
         </div>
     </div>
+    <script src="/js/utilesVista.js"></script>
+    <script src="/js/modeloNumero.js"></script>
+    <script src="/js/vistaWeb.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 var urlIniciarVista = "modeloNumero/vistaConectada";
 
-function mostrar_msg_bienvenida(msgBnv) {
+function mostrar_msgBnv(msgBnv) {
     document.getElementById("msgBienvenida").textContent = msgBnv;
 }
 
@@ -8,7 +8,14 @@ function mostrar_msg(msg) {
     document.getElementById("msg").textContent = msg;
 }
 function mostrar_resultado(resultado) {
-    document.getElementById("resultado").innerHTML = crearListaDesdeJson(resultado);
+    if (!resultado || resultado.length == 0) {
+        document.getElementById("resultado").innerHTML = "<p>No hay datos</p>";
+        return;
+    }
+
+    const listaHTML = crearTablaDesdeJson(resultado, null);
+
+    document.getElementById("resultado").innerHTML = listaHTML;
 }
 
 function mostrar_cantidad_faltante(cantidadFaltan) {
