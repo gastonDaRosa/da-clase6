@@ -1,7 +1,7 @@
 var urlIniciarVista = "modeloNumero/vistaConectada";
 
 function mostrar_msgBnv(msgBnv) {
-    document.getElementById("msgBienvenida").textContent = msgBnv;
+    document.getElementById("msgBnv").textContent = msgBnv;
 }
 
 function mostrar_msg(msg) {
@@ -18,17 +18,21 @@ function mostrar_resultado(resultado) {
     document.getElementById("resultado").innerHTML = listaHTML;
 }
 
-function mostrar_cantidad_faltante(cantidadFaltan) {
-    document.getElementById("faltanIngresar").textContent = cantidadFaltan;
+function mostrar_cantidad_faltante(faltanIngresar) {
+    document.getElementById("faltanIngresar").textContent = faltanIngresar;
 }
 
 function iniciar() {
+    
     const cant = document.getElementById("numCantidad").value;
 
     // Armamos el string URL Encoded
     const data = "cant=" + encodeURIComponent(cant);
 
-    submit("/modeloNumero/iniciar", data);
+    if (cant != null) {
+        submit("/modeloNumero/iniciar", data);
+    }
+
 }
 
 function ingresar() {
@@ -37,5 +41,8 @@ function ingresar() {
     // Armamos el string URL Encoded
     const data = "numero=" + encodeURIComponent(num);
 
-    submit("/modeloNumero/ingresar", data);
+    if (num != null) {
+        submit("/modeloNumero/ingresar", data);
+    }
+
 }

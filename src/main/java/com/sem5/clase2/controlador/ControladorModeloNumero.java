@@ -1,7 +1,9 @@
 package com.sem5.clase2.controlador;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,13 +20,13 @@ public class ControladorModeloNumero {
 
     private ModeloNumero modelo = new ModeloNumero();
 
-
     @PostMapping("/vistaConectada")
-    public List<Respuesta> vistaConectada(){
+    public List<Respuesta> vistaConectada() {
         return datosModeloNumero();
     }
+
     @PostMapping("/iniciar")
-    public List<Respuesta> iniciar(@RequestParam int cant){
+    public List<Respuesta> iniciar(@RequestParam int cant) {
         if (cant < 0) {
             return Respuesta.lista(new Respuesta("msg", "El numero no puede ser menor a 0 "));
         }
@@ -34,8 +36,9 @@ public class ControladorModeloNumero {
         }
         return Respuesta.lista(new Respuesta("msg", "Ya fue iniciado"));
     }
+
     @PostMapping("/ingresar")
-    public List<Respuesta> ingresarNumero(@RequestParam int numero){
+    public List<Respuesta> ingresarNumero(@RequestParam int numero) {
         if (numero < 0) {
             return Respuesta.lista(new Respuesta("msg", "El numero no puede ser menor a 0 "));
         }
@@ -43,30 +46,38 @@ public class ControladorModeloNumero {
             return Respuesta.lista(new Respuesta("msg", numero + " fue agregado"));
         }
         if (modelo.ingresoFinalizado()) {
-            ArrayList<Integer> ret = modelo.obtenerResultado();
-            modelo = new ModeloNumero();
-            return Respuesta.lista(new Respuesta("resultado", ret),
-            new Respuesta("msg", "Resultado..."));
+            List<Map<String, Object>> retObj = modelo.obtenerResultado().stream()
+                    .map(n -> {
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("numero", n);
+                        return map;
+                    })
+                    .toList();
+
+            return Respuesta.lista(
+                    new Respuesta("resultado", retObj),
+                    new Respuesta("msg", "Resultado..."));
+
         }
         return Respuesta.lista(new Respuesta("msg", "Inicie de nuevo"));
     }
 
-
-    private List<Respuesta> datosModeloNumero(){
+    private List<Respuesta> datosModeloNumero() {
         List<Respuesta> datos = Respuesta.lista();
         if (modelo.ingresoFinalizado()) {
-            datos.add( new Respuesta("listaDev", modelo.obtenerResultado()) );
+            datos.add(new Respuesta("listaDev", modelo.obtenerResultado()));
         }
         if (modelo.vacio()) {
-            datos.add( new Respuesta("msgBnv", "Bienvenido, ingrese una cantidad y presione Comenzar") );
-        }else{
-            datos.add(new Respuesta("msgBnv", "Ingrese sus numeros en el siguiente input y presione Ingresar") );
-            datos.add(new Respuesta("faltanIngresar", "Numeros restantes por ingresar " + modelo.getCantidadFaltan()) );
+            datos.add(new Respuesta("msgBnv", "Bienvenido, ingrese una cantidad y presione Comenzar"));
+        } else {
+            datos.add(new Respuesta("msgBnv", "Ingrese sus numeros en el siguiente input y presione Ingresar"));
+            datos.add(new Respuesta("faltanIngresar", "Numeros restantes por ingresar " + modelo.getCantidadFaltan()));
         }
         return datos;
     }
+
     @PostMapping("/salir")
-    private void vistaCerrada(){
+    private void vistaCerrada() {
         modelo = new ModeloNumero();
     }
 
