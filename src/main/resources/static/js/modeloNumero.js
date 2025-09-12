@@ -18,7 +18,7 @@ function mostrar_resultado(resultado) {
     document.getElementById("resultado").innerHTML = listaHTML;
 }
 
-function mostrar_cantidad_faltante(faltanIngresar) {
+function mostrar_faltanIngresar(faltanIngresar) {
     document.getElementById("faltanIngresar").textContent = faltanIngresar;
 }
 

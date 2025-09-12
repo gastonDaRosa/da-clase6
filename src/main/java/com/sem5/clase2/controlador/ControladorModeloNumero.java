@@ -32,7 +32,9 @@ public class ControladorModeloNumero {
         }
         if (modelo.iniciar(cant)) {
             modelo.setCantidad(cant);
-            return Respuesta.lista(new Respuesta("msg", "Iniciando con " + cant + " de numeros"));
+            List<Respuesta> datos = Respuesta.lista(new Respuesta("msg", "Iniciando con " + cant + " de numeros"));
+            datos.addAll(datosModeloNumero());
+            return datos;
         }
         return Respuesta.lista(new Respuesta("msg", "Ya fue iniciado"));
     }
@@ -53,10 +55,12 @@ public class ControladorModeloNumero {
                         return map;
                     })
                     .toList();
-
-            return Respuesta.lista(
+                    List<Respuesta> datos = Respuesta.lista(
                     new Respuesta("resultado", retObj),
-                    new Respuesta("msg", "Resultado..."));
+                    new Respuesta("msg", "Resultado...")
+                    );
+                    datos.addAll(datosModeloNumero());
+            return datos;
 
         }
         return Respuesta.lista(new Respuesta("msg", "Inicie de nuevo"));
