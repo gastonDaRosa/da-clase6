@@ -45,24 +45,26 @@ public class ControladorModeloNumero {
             return Respuesta.lista(new Respuesta("msg", "El numero no puede ser menor a 0 "));
         }
         if (modelo.ingresar(numero)) {
-            return Respuesta.lista(new Respuesta("msg", numero + " fue agregado"));
-        }
-        if (modelo.ingresoFinalizado()) {
-            List<Map<String, Object>> retObj = modelo.obtenerResultado().stream()
-                    .map(n -> {
-                        Map<String, Object> map = new HashMap<>();
-                        map.put("numero", n);
-                        return map;
-                    })
-                    .toList();
-                    List<Respuesta> datos = Respuesta.lista(
-                    new Respuesta("resultado", retObj),
-                    new Respuesta("msg", "Resultado...")
-                    );
-                    datos.addAll(datosModeloNumero());
-            return datos;
+            if (modelo.ingresoFinalizado()) {
+                List<Map<String, Object>> retObj = modelo.obtenerResultado().stream()
+                        .map(n -> {
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("numero", n);
+                            return map;
+                        })
+                        .toList();
+                List<Respuesta> datos = Respuesta.lista(
+                        new Respuesta("resultado", retObj),
+                        new Respuesta("msg", "Resultado..."));
+                datos.addAll(datosModeloNumero());
+                return datos;
 
+            }
+            List<Respuesta> datos = Respuesta.lista(new Respuesta("msg", numero + " fue agregado"));
+            datos.addAll(datosModeloNumero());
+            return datos;
         }
+
         return Respuesta.lista(new Respuesta("msg", "Inicie de nuevo"));
     }
 
@@ -77,6 +79,7 @@ public class ControladorModeloNumero {
             datos.add(new Respuesta("msgBnv", "Ingrese sus numeros en el siguiente input y presione Ingresar"));
             datos.add(new Respuesta("faltanIngresar", "Numeros restantes por ingresar " + modelo.getCantidadFaltan()));
         }
+        datos.add(new Respuesta("listaDev", modelo.obtenerResultado()));
         return datos;
     }
 

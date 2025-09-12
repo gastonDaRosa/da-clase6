@@ -29,6 +29,8 @@ function iniciar() {
     // Armamos el string URL Encoded
     const data = "cant=" + encodeURIComponent(cant);
 
+    document.getElementById("numCantidad").value = 0;
+
     if (cant != null) {
         submit("/modeloNumero/iniciar", data);
     }
@@ -41,6 +43,8 @@ function ingresar() {
     // Armamos el string URL Encoded
     const data = "numero=" + encodeURIComponent(num);
 
+    document.getElementById("numAgregar").value = 0;
+    
     if (num != null) {
         submit("/modeloNumero/ingresar", data);
     }
